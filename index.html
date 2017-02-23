@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+html, body { height: 100%; margin: 0; padding: 0; }
+#map { height: 100%; }
+</style>
+</head>
+<body>
+  <div id="map"></div>
+  <script type="text/javascript">
+var marker
+  function initMap() {
+    var map;
+    var myLatlng = new google.maps.LatLng(-34.397,150.644);
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -34.397, lng: 150.644},
+      zoom: 8
+    });
+
+    marker = new google.maps.Marker({
+      position: myLatlng,
+      title:"Hello World!",
+      animation: google.maps.Animation.DROP
+    });
+    marker.addListener('click', toggleBounce);
+
+    // To add the marker to the map, call setMap();
+    marker.setMap(map);
+  }
+
+  function toggleBounce() {
+    if (marker.getAnimation() !== null) {
+      marker.setAnimation(null);
+    } else {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+  }
+
+  </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8SASZfhAkOfB2Ut2cmSocfBT4F2q-IVU&callback=initMap">
+  </script>
+</body>
+</html>
